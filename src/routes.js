@@ -1,34 +1,50 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+   /*  BrowserRouter as Router, */
     Switch,
     Route,
-    Link,
-    useParams
+    
   } from "react-router-dom";
 
-import {Container} from 'reactstrap';
+// import {Container} from 'reactstrap';
 import MainContent from './containers/MainContent';
 import DetailContent from './containers/DetailContent';
+import Header from './components/Header';
+import Home from './containers/Home';
 
   const Routes = () => {
     return (
-        <Container fluid>
-            <Route 
-                exact 
-                path="/:query?" 
-                render={routeProps =>
-                   <MainContent history={routeProps.history} match={routeProps.match} />
-                }
-            />
-            <Route 
-                exact 
-                path="/detail/:id?" 
-                render={routeProps =>
-                   <DetailContent history={routeProps.history} match={routeProps.match} />
-                }
-            />
-        </Container>
+        
+        <Switch>
+          <Route 
+              exact 
+              path="/" 
+              render={routeProps =>
+                <Home history={routeProps.history} match={routeProps.match} />
+              }
+          />
+          <Route 
+              exact 
+              path="/:query" 
+              render={routeProps =>
+                <>
+                  <Header history={routeProps.history} match={routeProps.match}/>
+                  <MainContent match={routeProps.match} />
+                </>
+              }
+          />
+          <Route 
+              exact 
+              path="/image/:id?" 
+              render={routeProps =>
+                <>
+                  <Header history={routeProps.history} match={routeProps.match}/>
+                  <DetailContent history={routeProps.history} match={routeProps.match} />
+                </>
+              }
+          />
+        </Switch>
+    
     );
   }
 

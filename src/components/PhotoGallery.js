@@ -1,25 +1,21 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Photo from './Photo';
-import {Row, Spinner} from 'reactstrap';
-const loaderStyle = {
-    margin: '0 auto',
-}
+import {Spinner} from 'reactstrap';
 
 
 const PhotoGallery = (props) => {
     
-    const {photos, loadPhotos} = props;
+    const {photos, loadPhotos, endLoading} = props;
     const loader = useRef(null);
     
-    const handleObserver =  (entities) => {
-        const target = entities[0];
-        if (target.isIntersecting) {   
-            console.log('loadPhotos Observer Lazy')
-            loadPhotos()
-        }
-    }
-
     useEffect(() => {
+        const handleObserver =  (entities) => {
+            const target = entities[0];
+            if (target.isIntersecting) {   
+                console.log('loadPhotos Observer Lazy');
+                loadPhotos();
+            }
+        }
         var options = {
             root: null,
             rootMargin: "5px",
@@ -27,16 +23,20 @@ const PhotoGallery = (props) => {
         };
         const observer = new IntersectionObserver(handleObserver, options);
         if (loader.current && photos.length > 0) {
-            observer.observe(loader.current)
+            observer.observe(loader.current);
         }
-    },[])
+    },[photos.length, loadPhotos])
+
+   
     
     return (
         <>
-            {photos.map((photo) => <Photo key={photo.id} photo={photo} /> )}
-            {
-                <div className="loading mt-4" ref={loader}>
-                    <Spinner  style={loaderStyle} animation="border" variant="info" />
+            {photos.map((photo, i) => 
+                <Photo key={`${photo.id}-${i}`} photo={photo} /> 
+            )}
+            {!endLoading &&
+                <div className="m-auto" ref={loader}>
+                    <Spinner animation="border" variant="info" />
                 </div>
             }
         </>

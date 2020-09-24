@@ -12,8 +12,11 @@ const unsplash = new Unsplash({
 });
 
 export const getPhotos = (options) => {
-    //console.log(process.env.REACT_APP_ACCESS_KEY)
     const request = unsplash.search.photos(options.query, options.page_start, 12 ,{ orientation: "landscape" }).then(toJson)
     return request
-    
+}
+
+export const getPhoto = (options) => {
+    const request = unsplash.photos.getPhoto(options.id).then(toJson)
+    return request
 }

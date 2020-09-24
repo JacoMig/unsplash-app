@@ -1,26 +1,20 @@
 import React from 'react';
-import {AppProvider} from './context/AppContext';
+
 import './app.scss';
-import Header from './containers/Header';
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from './routes';
-import {Container} from 'reactstrap';
-
+// import {Container} from 'reactstrap';
+// import Header from './components/Header';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-library.add(faSearch); 
+import { faSearch, faUser, faTags, faThumbsUp, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+library.add(faSearch, faUser, faTags, faThumbsUp, faCalendarAlt); 
 
 
 function App() {
   return (
-      <AppProvider>
-        <Container fluid className="mt-4">
-          <Router>
-            <Header />
-            <Routes />
-          </Router>
-        </Container>
-      </AppProvider>
+    <Router>
+      <Routes />
+    </Router>
   );
 }
 
