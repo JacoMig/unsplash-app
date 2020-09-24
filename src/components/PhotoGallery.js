@@ -22,7 +22,7 @@ const PhotoGallery = (props) => {
             threshold: 1.0
         };
         const observer = new IntersectionObserver(handleObserver, options);
-        if (loader.current && photos.length > 0) {
+        if (loader.current) {
             observer.observe(loader.current);
         }
     },[])
