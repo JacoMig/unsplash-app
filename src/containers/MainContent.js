@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import {getPhotos} from '../utils/api';
-import {Row, Col, Container} from 'reactstrap';
+import {Row, Col, Container, Spinner} from 'reactstrap';
 import PhotoGallery from '../components/PhotoGallery';
 
 let count = 0
@@ -57,6 +57,7 @@ const MainContent = (props) => {
                 {!loading &&  photos.length === 0 && 
                     <Col col={12}><h6>Nessun risultato trovato per: <i>{query}</i></h6></Col>
                 }
+                {loading && <Spinner animation="border" variant="info" />}
             </Row>
         </Container>
     );

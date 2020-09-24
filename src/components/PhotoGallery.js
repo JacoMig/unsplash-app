@@ -25,7 +25,7 @@ const PhotoGallery = (props) => {
         if (loader.current && photos.length > 0) {
             observer.observe(loader.current);
         }
-    },[photos.length, loadPhotos])
+    },[])
 
    
     
@@ -34,11 +34,12 @@ const PhotoGallery = (props) => {
             {photos.map((photo, i) => 
                 <Photo key={`${photo.id}-${i}`} photo={photo} /> 
             )}
-            {!endLoading &&
-                <div className="m-auto" ref={loader}>
+            
+            <div className="m-auto" ref={loader}>
+                {!endLoading &&
                     <Spinner animation="border" variant="info" />
-                </div>
-            }
+                }
+            </div>
         </>
     );
 };
