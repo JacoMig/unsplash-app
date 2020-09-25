@@ -10,7 +10,7 @@ const DetailContent = (props) => {
     const [photo, setPhoto] = useState({});
 
     useEffect(() => {
-       id && id !== "" && getPhoto({id}).then(res => setPhoto(res))
+       id && id !== "" && getPhoto({id}).then(res => setPhoto(res)).catch(e => console.log(e))
     }, [id])
 
     return (

@@ -22,7 +22,7 @@ const MainContent = (props) => {
                 if(count === res.total_pages) {
                     setEndLoading(true);
                 }
-            });
+            }).catch(e => console.log(e))
     }
 
    
