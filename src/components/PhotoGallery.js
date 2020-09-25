@@ -6,7 +6,7 @@ import {Spinner} from 'reactstrap';
 const PhotoGallery = (props) => {
     
     const {photos, loadPhotos, endLoading} = props;
-    const loader = useRef(null);
+    /* const loader = useRef(null);
     
     useEffect(() => {
         const handleObserver =  (entities) => {
@@ -25,7 +25,7 @@ const PhotoGallery = (props) => {
         if (loader.current) {
             observer.observe(loader.current);
         }
-    },[])
+    },[]) */
 
    
     
@@ -34,12 +34,6 @@ const PhotoGallery = (props) => {
             {photos.map((photo, i) => 
                 <Photo key={`${photo.id}-${i}`} photo={photo} /> 
             )}
-            
-            <div className="m-auto" ref={loader}>
-                {!endLoading &&
-                    <Spinner animation="border" variant="info" />
-                }
-            </div>
         </>
     );
 };
