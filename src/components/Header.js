@@ -5,7 +5,7 @@ import logo from '../images/unsplash_logo.svg';
 
 const Header = (props) => {
     
-    const {history, match, className} = props;
+    const {history, match} = props;
     
     const searchPhotos = (query) => {
         props.history.push(`/${query}`)

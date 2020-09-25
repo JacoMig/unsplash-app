@@ -6,7 +6,7 @@ const Home = (props) => {
     return (
         <Container className="home">
             <img className="d-block d-sm-none homelogo w-25" src={logo} alt="logo"/>
-            <Header className="search-home" match={props.match} history={props.history} />
+            <Header match={props.match} history={props.history} />
         </Container>
     );
 };
