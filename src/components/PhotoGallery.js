@@ -18,7 +18,7 @@ const PhotoGallery = (props) => {
         }
         var options = {
             root: null,
-            rootMargin: "5px",
+            rootMargin: "30px",
             threshold: 1.0
         };
         const observer = new IntersectionObserver(handleObserver, options);

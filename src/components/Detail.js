@@ -28,6 +28,7 @@ const Detail = ({photo}) => {
             <CardBody className={`${!isImgLoaded ? 'pt-250' : ''}`}>
                 <CardTitle className="mb-5">
                     {photo.alt_description && <h4>{photo.alt_description}</h4> }
+                    {photo.description && <p>{photo.description}</p> }
                 </CardTitle>
                 <CardSubtitle>
                     <span className="icon"><FontAwesomeIcon icon="user" /></span>
