@@ -3,7 +3,6 @@ header {
     height: 70px;
     background-color: white;
     box-shadow: 3px 3px 3px lightgrey;
-    transition: all 0.3s;
 }
 
 .container {
@@ -16,6 +15,9 @@ header {
         flex-direction: column;
         justify-content: center;
         height: 93vh;
+        header {
+            top: 45%;
+        }
     }
 }
 
@@ -61,5 +63,5 @@ header {
 }
 
 .homelogo {
-    margin: 0 auto;
+    margin: -123px auto 0 auto;
 }

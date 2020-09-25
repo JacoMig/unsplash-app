@@ -12,7 +12,7 @@ const Header = (props) => {
     }
 
     return (
-        <header className={className ? className : "fixed-top"}>
+        <header className={"fixed-top"}>
             <Row className="align-items-center">
                 <Col sm={1} onClick={() => history.push(`/`)}>
                     <img className="d-none d-sm-block" src={logo} alt="logo"/>
