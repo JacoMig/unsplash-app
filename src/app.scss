@@ -41,6 +41,23 @@ header {
         color: inherit;
         text-decoration: underline;
     }
+    img {
+        opacity: 0;
+        transition: opacity 0.3s;
+        &.fade-in {
+            opacity: 1;
+        }
+    }
+    .img-placeholder {
+        min-height: 250px;
+        width: 100%;
+        display: flex;
+        position: absolute;
+        align-items: center;
+    }
+    .pt-250 {
+        padding-top: 250px;
+    }
 }
 
 .homelogo {

@@ -10,23 +10,19 @@ const MainContent = (props) => {
     const {match} = props;
     const query = match.params.query ? match.params.query : ""
     const [photos, setPhotos] = useState([]);
-    const [totalPages, setTotalPages] = useState(0);
     const [endLoading, setEndLoading] = useState(false);
     const [loading, setIsLoading] = useState(false);
  
    
     const loadPhotos = () => {
         count += 1
-        if(count === totalPages) {
-            setEndLoading(true);
-            return
-        }else {
-            return getPhotos({query, page_start: count})
-                .then(res => {
-                    setPhotos(state => [...state, ...res.results]);
-                    count === 1 && setTotalPages(res.total_pages);
-                });
-        }
+        return getPhotos({query, page_start: count})
+            .then(res => {
+                setPhotos(state => [...state, ...res.results]);
+                if(count === res.total_pages) {
+                    setEndLoading(true);
+                }
+            });
     }
 
    
@@ -40,6 +36,7 @@ const MainContent = (props) => {
                 count = 0;
                 await loadPhotos();
                 setIsLoading(false)
+                setEndLoading(false);
                 console.log('initial fetchdata')
             }
             fetchData()    

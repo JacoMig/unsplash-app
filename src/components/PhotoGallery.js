@@ -34,12 +34,13 @@ const PhotoGallery = (props) => {
             {photos.map((photo, i) => 
                 <Photo key={`${photo.id}-${i}`} photo={photo} /> 
             )}
-            
-            <div className="m-auto" ref={loader}>
-                {!endLoading &&
-                    <Spinner animation="border" variant="info" />
-                }
-            </div>
+            {!endLoading &&
+                <div className="m-auto" ref={loader}>
+                    
+                        <Spinner animation="border" variant="info" />
+                
+                </div>
+             }
         </>
     );
 };

@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {Card, CardBody, CardImg, CardSubtitle, CardTitle} from 'reactstrap';
+import {Card, CardBody, CardImg, CardSubtitle, CardTitle, Spinner} from 'reactstrap';
 
 const Detail = ({photo}) => {
     
     const date = new Date(photo.created_at);
-   
+    const [isImgLoaded, setIsImgLoaded] = useState(false);
+
+    const loadImage = (e) => {
+        setIsImgLoaded(true)
+    }
+
     return (
         <Card>
-            <div style={{'minHeight' : '300px','width': '100%', 'backgroundColor':'#dee2e6'}}> 
-                {photo.urls.full && 
-                    <CardImg top src={photo.urls.full} alt={photo.alt_description} /> 
-                }
-            </div> 
-            
-            <CardBody>
+            { !isImgLoaded &&
+               <div className="text-center img-placeholder">
+                   <Spinner animation="border" variant="info" />
+               </div>
+            }
+            {photo.urls.full && 
+                <CardImg 
+                    className={`${isImgLoaded ? 'fade-in' : ''}`} 
+                    onLoad={loadImage} 
+                    src={photo.urls.full} 
+                    alt={photo.alt_description} /> 
+            }
+            <CardBody className={`${!isImgLoaded ? 'pt-250' : ''}`}>
                 <CardTitle className="mb-5">
                     {photo.alt_description && <h4>{photo.alt_description}</h4> }
                 </CardTitle>
