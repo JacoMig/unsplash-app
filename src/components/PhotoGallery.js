@@ -12,7 +12,7 @@ const PhotoGallery = (props) => {
         const handleObserver =  (entities) => {
             const target = entities[0];
             if (target.isIntersecting) {   
-                console.log('loadPhotos Observer Lazy');
+                console.log('loadPhotos Lazy');
                 loadPhotos();
             }
         }

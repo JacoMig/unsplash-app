@@ -40,7 +40,7 @@ const MainContent = (props) => {
                 count = 0;
                 await loadPhotos();
                 setIsLoading(false)
-                console.log('fetchdata')
+                console.log('initial fetchdata')
             }
             fetchData()    
         }
@@ -49,7 +49,7 @@ const MainContent = (props) => {
     
 
     return (
-        <Container fluid>
+        <Container>
              <Row>
                 {!loading &&  photos.length > 0 && 
                     <PhotoGallery endLoading={endLoading} loadPhotos={loadPhotos} photos={photos} />

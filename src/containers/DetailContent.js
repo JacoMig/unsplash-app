@@ -14,7 +14,7 @@ const DetailContent = (props) => {
     }, [id])
 
     return (
-        <Container fluid className="detail">
+        <Container className="detail">
             {Object.keys(photo).length > 0 &&
                 <Detail photo={photo} />
             }

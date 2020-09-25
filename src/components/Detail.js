@@ -8,7 +8,12 @@ const Detail = ({photo}) => {
    
     return (
         <Card>
-            <CardImg top src={photo.urls.full} alt={photo.alt_description} />
+            <div style={{'minHeight' : '300px','width': '100%', 'backgroundColor':'#dee2e6'}}> 
+                {photo.urls.full && 
+                    <CardImg top src={photo.urls.full} alt={photo.alt_description} /> 
+                }
+            </div> 
+            
             <CardBody>
                 <CardTitle className="mb-5">
                     {photo.alt_description && <h4>{photo.alt_description}</h4> }
@@ -22,7 +27,7 @@ const Detail = ({photo}) => {
                 </CardSubtitle>
                 <div className="mt-4 d-flex">
                     <span className="icon"><FontAwesomeIcon icon="calendar-alt" /></span>
-                    <span>{date && (`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`)}</span>
+                    <span>{date && (`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`)}</span>
                 </div>
                 {photo.likes && 
                     <div className="mt-4 d-flex">
