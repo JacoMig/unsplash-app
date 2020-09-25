@@ -40,7 +40,7 @@ const Detail = ({photo}) => {
                     <span className="icon"><FontAwesomeIcon icon="calendar-alt" /></span>
                     <span>{date && (`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`)}</span>
                 </div>
-                {photo.likes && 
+                {photo.likes > 0 && 
                     <div className="mt-4 d-flex">
                         <span className="icon"><FontAwesomeIcon icon="thumbs-up" /></span>
                         <span>{photo.likes}</span>
