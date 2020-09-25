@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Card, CardBody, CardImg, CardSubtitle, CardTitle, Spinner} from 'reactstrap';
 

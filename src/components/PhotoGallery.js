@@ -36,9 +36,7 @@ const PhotoGallery = (props) => {
             )}
             {!endLoading &&
                 <div className="m-auto" ref={loader}>
-                    
-                        <Spinner animation="border" variant="info" />
-                
+                    <Spinner animation="border" variant="info" />
                 </div>
              }
         </>
