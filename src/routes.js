@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 import MainContent from './containers/MainContent';
 import DetailContent from './containers/DetailContent';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Home from './containers/Home';
 
   const Routes = () => {

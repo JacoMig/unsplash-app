@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col, Container} from 'reactstrap';
-import InputSearch from './InputSearch';
-import logo from '../images/unsplash_logo.svg';
+import InputSearch from '../InputSearch';
+import logo from '../../images/unsplash_logo.svg';
 
 const Header = (props) => {
     
@@ -13,7 +13,8 @@ const Header = (props) => {
 
     return (
         <header className={"fixed-top"}>
-            <Container className="mt-0">
+            <button data-testid="button">CLICK ME PLEASE</button>
+            {/* <Container className="mt-0">
                 <Row className="align-items-center">
                     <Col sm={1} onClick={() => history.push(`/`)}>
                         <img className="d-none d-sm-block" src={logo} alt="logo"/>
@@ -22,7 +23,7 @@ const Header = (props) => {
                         <InputSearch match={match} searchPhotos={searchPhotos} />
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
         </header>
     );
 };
