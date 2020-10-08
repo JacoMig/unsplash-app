@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {InputGroupText, Form, Input, InputGroup, InputGroupAddon} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 const InputSearch = (props) => {
     
     const {searchPhotos, match} = props;
@@ -28,6 +29,7 @@ const InputSearch = (props) => {
                 <Input 
                     type="text" 
                     name="inputQuery" 
+                    data-testid="inputQuery"
                     id="inputQuery" 
                     value={query}
                     placeholder="Search free high resolution photos" 
