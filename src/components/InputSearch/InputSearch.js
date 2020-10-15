@@ -5,26 +5,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const InputSearch = (props) => {
     
-    const {searchPhotos, match} = props;
+    const {match, history} = props;
     const [query, setQuery] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        query !== "" && searchPhotos(query)
+        query !== "" && history.push(`/${query}`);
     }
 
-    const handleChange = (e) => {
-        const val = e.target.value;
+    const handleChange = (val) => {
+        // const val = e.target.value;
         setQuery(val);
     }
 
     useEffect(() => {
         !match.params.query && setQuery("");
         match.params.query && setQuery(match.params.query);
+        
     }, [match.params.query])
     
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form  data-testid="form" id="form" onSubmit={handleSubmit}>
             <InputGroup>
                 <Input 
                     type="text" 
@@ -33,10 +34,10 @@ const InputSearch = (props) => {
                     id="inputQuery" 
                     value={query}
                     placeholder="Search free high resolution photos" 
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e.target.value)}
                     />
                 <InputGroupAddon addonType="append">
-                    <InputGroupText onClick={handleSubmit}>
+                    <InputGroupText id="submitButton" onClick={handleSubmit}>
                         <FontAwesomeIcon icon="search" />
                     </InputGroupText>
                 </InputGroupAddon>    

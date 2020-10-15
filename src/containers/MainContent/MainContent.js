@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
-import {getPhotos} from '../utils/api';
+import {getPhotos} from '../../utils/api';
 import {Row, Col, Container, Spinner} from 'reactstrap';
-import PhotoGallery from '../components/PhotoGallery';
+import PhotoGallery from '../../components/PhotoGallery';
 
 let count = 0
 

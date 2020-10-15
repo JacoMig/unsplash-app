@@ -7,10 +7,6 @@ const Header = (props) => {
     
     const {history, match, label} = props;
     
-    const searchPhotos = (query) => {
-        history.push(`/${query}`)
-    }
-
     return (
         <header className={"fixed-top"}>
             <Container className="mt-0">
@@ -19,7 +15,7 @@ const Header = (props) => {
                         <img className="d-none d-sm-block" src={logo} alt="logo"/>
                     </Col>
                     <Col xs={12} sm={11}>
-                         <InputSearch match={match} searchPhotos={searchPhotos} />  
+                        <InputSearch match={match} history={history} />  
                     </Col>
                 </Row>
             </Container> 

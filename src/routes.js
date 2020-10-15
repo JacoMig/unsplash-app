@@ -4,7 +4,7 @@ import {
     Route,
     
   } from "react-router-dom";
-import MainContent from './containers/MainContent';
+import MainContent from './containers/MainContent/MainContent';
 import DetailContent from './containers/DetailContent';
 import Header from './components/Header/Header';
 import Home from './containers/Home';
