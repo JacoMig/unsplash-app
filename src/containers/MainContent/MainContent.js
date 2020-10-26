@@ -46,6 +46,7 @@ const MainContent = (props) => {
     return (
         <Container>
              <Row>
+                {/* photos.length > 0 && <p className="testP" id="testP">{photos[0].id}</p> */}
                 {!loading &&  photos.length > 0 && 
                     <PhotoGallery endLoading={endLoading} loadPhotos={loadPhotos} photos={photos} />
                 }
