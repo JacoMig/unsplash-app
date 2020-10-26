@@ -54,7 +54,6 @@ describe("MainContent testing", () => {
   
  
   test("Test Fetching Request", async () => {
-   
    // Here you make a real fetch API
    // const response = await getPhotos({query: 'woman', page_start: 1})
     // const results = response.json()
