@@ -46,7 +46,6 @@ const MainContent = (props) => {
     return (
         <Container>
              <Row>
-                <p data-testid='result'>{Object.keys(photos).length > 0 && photos[0].urls.small}</p>
                 {!loading &&  photos.length > 0 && 
                     <PhotoGallery endLoading={endLoading} loadPhotos={loadPhotos} photos={photos} />
                 }
