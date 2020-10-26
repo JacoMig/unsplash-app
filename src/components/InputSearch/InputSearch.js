@@ -37,7 +37,7 @@ const InputSearch = (props) => {
                     onChange={(e) => handleChange(e.target.value)}
                     />
                 <InputGroupAddon addonType="append">
-                    <InputGroupText id="submitButton" onClick={handleSubmit}>
+                    <InputGroupText data-test='submitButton' id="submitButton" onClick={handleSubmit}>
                         <FontAwesomeIcon icon="search" />
                     </InputGroupText>
                 </InputGroupAddon>    

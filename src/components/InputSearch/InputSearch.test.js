@@ -10,7 +10,7 @@ import registerFaIcons from '../../utils/registerFaIcons';
 import Enzyme, {shallow, mount} from 'enzyme';
 // import toJson from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
-const reactMock = require('react')
+
 Enzyme.configure({ adapter: new Adapter() })
 
 
@@ -54,10 +54,17 @@ describe("InputSearch testing", () => {
    
   })
 
-  test("Submit Form with Query", () => {
+  test("Submit Form with Query and Change Location Path", () => {
     wrapper.simulate('submit', { preventDefault: () => {} });
     expect(history.location.pathname).toBe(`/${myquery}`); 
   }) 
+
+  test("Click on Button and Submit Form", () => {
+    const Button = wrapper.find('#submitButton').first()
+    Button.simulate('click')
+    expect(history.location.pathname).toBe(`/${myquery}`); 
+    
+  })
 
 })
 
