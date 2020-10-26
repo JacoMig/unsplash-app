@@ -24,9 +24,9 @@ const componentProps = {
 }
 
 describe("MainContent testing", () => {
-  const setState = jest.fn();
+  // const setState = jest.fn();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const useStateMock = (initState) => [initState, setState];
+ // const useStateMock = (initState) => [initState, setState];
   // beforeAll(() => jest.spyOn(window, 'fetch'))
 
   beforeEach(() => {
