@@ -1,9 +1,20 @@
 import React, { useEffect, useState} from 'react';
 import {getPhotos} from '../../utils/api';
 import {Row, Col, Container, Spinner} from 'reactstrap';
-import PhotoGallery from '../../components/PhotoGallery';
+import PhotoGallery from '../../components/PhotoGallery/PhotoGallery';
 
 let count = 0
+
+export const loadPhotos = (query, setPhotos, setEndLoading) => {
+    count += 1
+    return getPhotos({query, page_start: count})
+        .then(res => {
+            setPhotos(state => [...state, ...res.results]);
+            if(count === res.total_pages) {
+                setEndLoading(true);
+            }
+    }).catch(e => console.log(e))
+}
 
 const MainContent = (props) => {
     
@@ -14,16 +25,9 @@ const MainContent = (props) => {
     const [loading, setIsLoading] = useState(false);
  
    
-    const loadPhotos = () => {
-        count += 1
-        return getPhotos({query, page_start: count})
-            .then(res => {
-                setPhotos(state => [...state, ...res.results]);
-                if(count === res.total_pages) {
-                    setEndLoading(true);
-                }
-            }).catch(e => console.log(e))
-    }
+   /*  const loadPhotos = () => {
+       
+    } */
 
    
     useEffect(() => {
@@ -32,7 +36,7 @@ const MainContent = (props) => {
                 setIsLoading(true);
                 setPhotos([]);
                 count = 0;
-                await loadPhotos();
+                await loadPhotos(query, setPhotos, setEndLoading);
                 setIsLoading(false)
                 setEndLoading(false);
                 console.log('initial fetchdata')
@@ -48,7 +52,7 @@ const MainContent = (props) => {
              <Row>
                 {/* photos.length > 0 && <p className="testP" id="testP">{photos[0].id}</p> */}
                 {!loading &&  photos.length > 0 && 
-                    <PhotoGallery endLoading={endLoading} loadPhotos={loadPhotos} photos={photos} />
+                    <PhotoGallery endLoading={endLoading} loadPhotos={() => loadPhotos(query, setPhotos, setEndLoading)} photos={photos} />
                 }
                 {!loading &&  photos.length === 0 && 
                     <Col col={12}><h6>Nessun risultato trovato per: <i>{query}</i></h6></Col>

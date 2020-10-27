@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route} from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 // import { render, cleanup, fireEvent } from '@testing-library/react';
-
+import {getPhotos} from './api';
 // Helper function
 export function componentWithRouterMatch(
     Ui,
@@ -10,7 +10,8 @@ export function componentWithRouterMatch(
       path = "/",
       route = "/",
       history = createMemoryHistory({ initialEntries: [route] })
-    } = {}
+    } = {},
+    {...props} = {}
   ) {
     return (
       
@@ -25,3 +26,5 @@ export function componentWithRouterMatch(
       
     );
   }
+  
+  

@@ -9,6 +9,7 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as fetchApi from '../../utils/api';
 
+import {loadPhotos} from './MainContent';
 Enzyme.configure({ adapter: new Adapter() })
 
 registerFaIcons()
@@ -23,48 +24,47 @@ const componentProps = {
 }
 
 describe("MainContent testing", () => {
-// const setState = jest.fn();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
- // const useStateMock = (initState) => [initState, setState];
-  // beforeAll(() => jest.spyOn(window, 'fetch'))
-  const setPhotos = jest.fn();
+
+  /* const setPhotos = jest.fn();
   const useStateSpy = jest.spyOn(React, "useState");
-  useStateSpy.mockImplementation(photos => [photos, setPhotos]); 
+  useStateSpy.mockImplementation(photos => [photos, setPhotos]);  */
   
   beforeEach(() => {
-    // history = createMemoryHistory()
-     wrapper = Enzyme.mount(Enzyme.shallow(<MainContent {...componentProps} />).get(0))
-   
-  })
+    wrapper = Enzyme.mount(Enzyme.shallow(<MainContent {...componentProps} />).get(0))
+  }) 
 
   afterEach(() => {
     jest.clearAllMocks();
     cleanup;
   });
 
+
+  test("Main Content matches Snapshot", () => {
+     expect(wrapper).toMatchSnapshot()
+  }) 
+
   test("it renders Main Content without crash", () => {
     const div = document.createElement("div");
     ReactDOM.render(componentWithRouterMatch(MainContent, {
       ...componentProps
     }), div);
-    
-  })
+  }) 
   
   
   jest.mock('../../utils/api');
-
-  test("Test Fetching Request", async () => {
+  
+  test("Check if Fetching Api returns something", async () => {
     await fetchApi.getPhotos({query: 'woman', page_start: 1}).then(data => {
       expect(data.results.length > 0).toBe(true);
-      
-    }) 
-
+    })  
+  }) 
   
-    
-    //console.log(wrapper.state('photos'))
-   // expect(setPhotos).toHaveBeenCalled();
+  
+  const setPhotos = jest.fn()
+  test("Check if setPhotos is called after fetch Api", async () => {
+    await loadPhotos('cat', setPhotos)
+    expect(setPhotos).toHaveBeenCalled()
    
-    
   })
 
 })
